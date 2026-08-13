@@ -1,1 +1,1 @@
-{"name":"kieu-anh-nails","version":"1.0.0","private":true}
+{"name":"kieu-anh-nails","version":"2.0.0","private":true,"type":"module","scripts":{"build":"node build.mjs"}}
