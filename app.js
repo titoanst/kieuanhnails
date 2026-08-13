@@ -1,1 +1,17 @@
 const modal=document.querySelector('#bookingModal'),service=modal.querySelector('[name="service"]'),form=document.querySelector('#bookingForm'),success=document.querySelector('.booking-success');document.querySelectorAll('.js-book').forEach(b=>b.onclick=()=>{if(b.dataset.service)service.value=b.dataset.service;form.hidden=false;success.hidden=true;modal.showModal()});document.querySelector('.modal-close').onclick=()=>modal.close();modal.onclick=e=>{if(e.target===modal)modal.close()};document.querySelectorAll('.quick-services button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.quick-services button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');service.value=b.dataset.service});document.querySelectorAll('.date-row button,.time-row button').forEach(b=>b.onclick=()=>{[...b.parentElement.children].forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.nail-look').forEach(c=>c.classList.toggle('hidden',b.dataset.filter!=='all'&&c.dataset.cat!==b.dataset.filter))});document.querySelectorAll('.nail-look').forEach(c=>c.onclick=()=>{c.classList.toggle('saved');c.querySelector('b').textContent=c.classList.contains('saved')?'♥':'♡'});form.onsubmit=e=>{e.preventDefault();const d=new FormData(e.currentTarget),t=`Xin chào Kiều Anh, mình muốn đặt lịch ${d.get('service')} vào ngày ${d.get('date')} lúc ${d.get('time')}. Tên: ${d.get('name')}, SĐT: ${d.get('phone')}. Ghi chú: ${d.get('note')||'Không có'}`;document.querySelector('#zaloConfirm').href='https://zalo.me/0878804489?text='+encodeURIComponent(t);e.currentTarget.hidden=true;success.hidden=false;document.querySelectorAll('.modal-progress i').forEach(x=>x.classList.add('active'))};
+
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduced){
+  const revealItems=document.querySelectorAll('.service-card,.nail-look,.price-group,.booking-card,.local-card,.testimonial blockquote');
+  revealItems.forEach((el,i)=>{el.classList.add('depth-reveal');el.style.setProperty('--delay',`${i%4*70}ms`)});
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  revealItems.forEach(el=>observer.observe(el));
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.nail-look,.service-card,.price-group,.booking-card').forEach(card=>{
+      card.classList.add('tilt-3d');
+      card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.setProperty('--rx',`${(0.5-y)*7}deg`);card.style.setProperty('--ry',`${(x-0.5)*9}deg`);card.style.setProperty('--gx',`${x*100}%`);card.style.setProperty('--gy',`${y*100}%`)});
+      card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg')});
+    });
+    document.querySelector('.hero')?.addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;document.documentElement.style.setProperty('--hero-x',`${x*10}px`);document.documentElement.style.setProperty('--hero-y',`${y*7}px`)});
+  }
+}
