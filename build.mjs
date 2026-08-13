@@ -1,5 +1,12 @@
 import { readFile, mkdir, writeFile, cp } from "node:fs/promises";
 
+if (process.env.VERCEL) {
+  await mkdir("dist", { recursive: true });
+  for (const file of ["index.html","styles.css","visual.css","app.js"]) await cp(file,`dist/${file}`);
+  await cp("public","dist",{recursive:true});
+  process.exit(0);
+}
+
 const html = await readFile("index.html", "utf8");
 const css = await readFile("styles.css", "utf8");
 const visual = await readFile("visual.css", "utf8");
