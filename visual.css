@@ -16,3 +16,21 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}.booking-modal{border:0
 .hero{position:relative;isolation:isolate;display:block;min-height:clamp(650px,76vh,850px);padding:clamp(70px,8vw,125px) 7vw;background:url('/hero-cover-v2.webp') 64% center/cover no-repeat}.hero:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(251,247,242,.98) 0%,rgba(251,247,242,.92) 33%,rgba(251,247,242,.38) 57%,rgba(251,247,242,0) 78%)}.hero-copy{max-width:680px}.hero-art{display:none}.hero .lead{max-width:560px}.hero .trust{max-width:620px}.hero h1{text-shadow:0 2px 20px #fff8}
 @media(max-width:800px){.hero{min-height:710px;padding:72px 20px 180px;background-position:68% center}.hero:before{background:linear-gradient(180deg,rgba(251,247,242,.98) 0%,rgba(251,247,242,.9) 48%,rgba(251,247,242,.25) 70%,rgba(251,247,242,0) 100%)}.hero-copy{max-width:560px}.hero .trust{background:#fffdf9d9;backdrop-filter:blur(10px);padding:16px;border-radius:14px;border:1px solid #fff}.hero .trust span:first-child{padding-left:0}}
 @media(max-width:600px){.hero{min-height:760px;padding-top:56px;background-position:70% bottom}.hero h1{font-size:54px}.hero .lead{font-size:15px;line-height:1.65}.hero .trust{position:absolute;left:18px;right:18px;bottom:24px}.hero .trust span{padding:0 10px}.hero .trust b{font-size:13px}.hero .trust small{font-size:6px}}
+@media(max-width:600px){
+  body{padding-bottom:86px}
+  .hero{min-height:0;padding:38px 18px 285px;background-position:69% bottom;overflow:hidden}
+  .hero:before{background:linear-gradient(180deg,rgba(251,247,242,.99) 0%,rgba(251,247,242,.96) 44%,rgba(251,247,242,.68) 62%,rgba(251,247,242,.06) 82%,rgba(251,247,242,0) 100%)}
+  .hero-copy{position:relative;z-index:2;max-width:none}
+  .hero .eyebrow{margin:0 0 12px;font-size:8px;line-height:1.5}
+  .hero h1{font-size:clamp(43px,12.5vw,53px);line-height:.98;margin:10px 0 17px}
+  .hero .lead{font-size:14px;line-height:1.55;margin:0}
+  .hero-actions{margin:22px 0 16px;gap:9px}
+  .hero-actions .button{width:100%;min-height:50px;padding:13px 18px}
+  .hero .trust{position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;max-width:none;margin-top:0;padding:13px 8px;background:#fffdf9e8}
+  .hero .trust span,.hero .trust span:first-child{min-width:0;padding:0 7px;text-align:center;align-content:center}
+  .hero .trust span:last-child{border-right:0}
+  .hero .trust b{font-size:12px;white-space:nowrap}
+  .hero .trust small{font-size:5.5px;line-height:1.35}
+  .mobile-dock{bottom:max(10px,env(safe-area-inset-bottom))}
+}
+@media(max-width:380px){.hero{padding-left:15px;padding-right:15px}.hero h1{font-size:42px}.hero .trust b{font-size:11px}}
